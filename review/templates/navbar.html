@@ -90,7 +90,18 @@
 
       {% endif %}
     </div>
-    
+    <a href="{% url 'my_profile'%}">
+      <span class="glyphicon glyphicon-user"style="font-size:20px;color:#D3D3D3">profile</span>
+    </a>
+    <a href="#">
+      <span class="glyphicon glyphicon-search"style="font-size:20px;color:#D3D3D3">search</span>
+    </a>
+     <a href="{%url 'posts'%}">
+      <span class="glyphicon glyphicon-home"style="font-size:20px;color:#D3D3D3">Home</span>
+    </a>
+    <a href="#">
+        <span class="glyphicon glyphicon-upload"style="font-size:20px;color:#D3D3D3">upload-image</span>
+      </a>
   </div>
 </nav>
 </body>
