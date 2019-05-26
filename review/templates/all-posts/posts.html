@@ -2,9 +2,10 @@
 
 {% block content %}
 {{block.super}}
-<div class="container col col-md-3">
+
 <!-- <div style="margin-left:110vh;margin-right:55vh"> -->
-    {% for project in projects%}
+{% for project in projects%}
+<div class="container col col-md-3">
     <div class="panel panel-default">
         <div class="panel-heading">{{project.title}}</div>
         <div class="panel-body">
@@ -24,4 +25,3 @@
 {% endfor %}
 {% endfor %}
 {% endblock %}
-</div>
