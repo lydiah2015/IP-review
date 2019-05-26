@@ -2,24 +2,26 @@
 
 {% block content %}
 {{block.super}}
-{% endblock %}
-<div style="margin-left: 37%;margin-right: 37%"></div>
-{% for project in projects%}
-{% if project.project %}
-  <div class="panel panel-default">
-    <div class="panel-heading">{{}}</div>
-    <div class="panel-body">
-      <a data-caption="<p>{{image.image_caption}}</p>" href="{{image.image.cdn_url}}"data-fancybox>
-        <img class="Image" style='width:50vh; height:50vh;' src="{{image.image.cdn_url | default_if_none:'#'}}" alt="image" id="photos">
-      </a>
-      </div>
-      <div class="panel-footer">
-        <p>{{image.image_caption}}</p>
-      </div>
+<div class="container col col-md-3">
+<!-- <div style="margin-left:110vh;margin-right:55vh"> -->
+    {% for project in projects%}
+    <div class="panel panel-default">
+        <div class="panel-heading">{{project.title}}</div>
+        <div class="panel-body">
+            <a data-caption="<p>{{project.description}}</p>" href="{{project.image.url}}" data-fancybox>
+                <img class="Image" style='width:30vh; height:60vh;' src="{{project.image.url}}" alt="image" id="photos">
+            </a>
+        </div>
+        <div class="panel-footer">
+            <p>rating:{{project.rating}}</p>
+            <p>comments:{{project.comm}}</p>
+            <p>user:{{project.user}}</p>
+        </div>
     </div>
-    {% endif %}
-   {% endfor %}
-
-
-
+</div>
+{% for comment in project.project_comments.all %}
+<p>{{comment.comm}} by {{comment.user.username}}</p>
+{% endfor %}
+{% endfor %}
+{% endblock %}
 </div>
