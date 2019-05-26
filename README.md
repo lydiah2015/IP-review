@@ -14,7 +14,7 @@ This project enables user to sign up/log in to the website,then they can view,co
 git clone `https://github.com/lydiah2015/IP-review.git`
 ```
 ```bash
-cd Egram
+cd IP-REVIEW
 ```
 2.Create and activate your virtual environment
 ```bash
@@ -28,7 +28,7 @@ source virtual/bin/activate
 ```
 SECRET_KEY='a good secret key'
 DEBUG=True
-DB_NAME='egramm'
+DB_NAME='review'
 DB_USER='your_postgres_username'
 DB_PASSWORD='your_postgres_password'
 DB_HOST='127.0.0.1'
@@ -44,8 +44,8 @@ DISABLE_COLLECTSTATIC=1
 ## User Stories
 | GENERAL BEHAVIOUR | INPUT | OUTPUT|
 |:------------------|:--------|:-----------|
-|User wants to search for a profile| They enter the profile name on the search bar |all relevant profiles are displayed|
-|User wants to view the project descriptions|They click on the image |projects are displayed|
+|User wants to search for a profile | They enter the profile name or on the search bar |all relevant profiles are displayed|
+|User wants to view the project |They click on the image |projects are displayed|
 |User wants to upload an image| They navigate to the admin route and upload the image along with its caption,tag.|Image is uploaded|
 
 ## Tecnologies used
