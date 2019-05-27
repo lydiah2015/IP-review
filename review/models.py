@@ -22,7 +22,7 @@ class Project(models.Model):
     url = models.CharField(max_length=140)
 
     def __str__(self):
-        return self.comm
+        return self.title
 
 class Comment(models.Model):
     comm = models.TextField(max_length=100)
