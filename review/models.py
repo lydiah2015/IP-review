@@ -13,21 +13,26 @@ class Profile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE)
 
+class Project(models.Model):
+    user = models.ForeignKey(User, blank=True)
+    image = models.ImageField(upload_to='image/')
+    description = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    rating = models.IntegerField()
+
+    def __str__(self):
+        return self.comm
 
 class Comment(models.Model):
     comm = models.TextField(max_length=100)
     user = models.ForeignKey(User,
                              blank=True, on_delete=models.CASCADE)
+    project = models.ForeignKey(Project,
+                                related_name="project_comments",
+                                null=True, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.comm
 
 
-class Project(models.Model):
-    user = models.ForeignKey(User, blank=True)
-    image = models.ImageField(upload_to='image/')
-    description = models.CharField(max_length=50)
-    comm = models.ForeignKey(Comment, null=True)
-    title = models.CharField(max_length=50)
-    rating = models.IntegerField()
-    
+

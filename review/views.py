@@ -8,8 +8,8 @@ from .models import Project,Profile,Comment
 
 @login_required(login_url='/accounts/login/')
 def posts(request):
-    project = Project.objects.all()
-    return render(request, 'all-posts/posts.html',{"projects":project})
+    projects = Project.objects.all()
+    return render(request, 'all-posts/posts.html',{"projects":projects})
 
 def my_profile(request):
     user = request.user
