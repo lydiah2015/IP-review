@@ -9,16 +9,16 @@ from django.contrib.contenttypes.models import ContentType
 
 class Profile(models.Model):
     profile_photo = models.ImageField(upload_to='image/')
-    biography = models.CharField(max_length=50)
+    biography = models.TextField(max_length=50)
     user = models.OneToOneField(
-        User, on_delete=models.CASCADE)
+        User, on_delete=models.CASCADE, related_name='profile')
 
 class Project(models.Model):
-    user = models.ForeignKey(User, blank=True)
+    user = models.ForeignKey(Profile, related_name='projects',  on_delete=models.CASCADE)
     image = models.ImageField(upload_to='image/')
     description = models.CharField(max_length=50)
     title = models.CharField(max_length=50)
-    rating = models.IntegerField()
+    rating = models.IntegerField(blank=True)
     url = models.CharField(max_length=140)
 
     def __str__(self):
@@ -27,10 +27,10 @@ class Project(models.Model):
 class Comment(models.Model):
     comm = models.TextField(max_length=100)
     user = models.ForeignKey(User,
-                             blank=True, on_delete=models.CASCADE)
+                             on_delete=models.CASCADE)
     project = models.ForeignKey(Project,
                                 related_name="project_comments",
-                                null=True, on_delete=models.CASCADE)
+                                 on_delete=models.CASCADE)
 
     def __str__(self):
         return self.comm
