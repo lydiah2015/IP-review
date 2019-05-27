@@ -19,6 +19,7 @@ class Project(models.Model):
     description = models.CharField(max_length=50)
     title = models.CharField(max_length=50)
     rating = models.IntegerField()
+    url = models.CharField(max_length=140)
 
     def __str__(self):
         return self.comm
