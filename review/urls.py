@@ -9,6 +9,8 @@ urlpatterns = [
     url(r"^comment/$", views.comment, name="comment"),
     url('^new_project', views.new_project, name='new_project'),
     url(r"^profile/update/$", views.update_profile, name="update_profile"),
+    url(r"^api/profiles$",views.profile,name="profile"),
+    url(r"^api/projects$",views.projects,name="project"),
 
 ]
 if settings.DEBUG:
