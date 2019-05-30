@@ -54,7 +54,6 @@ def comment(request):
 
 @login_required(login_url='/accounts/login/')
 def new_project(request):
-
     current_user = request.user.id
     the_user = User.objects.get(id=current_user)
     print(current_user)
@@ -70,3 +69,34 @@ def new_project(request):
         form = ProjectForm()
 
     return render(request, 'all-posts/project_form.html', {'form': form})
+
+def profile(request):
+    # {"username":"mitchelle","bio":"bio","pic":"","projects":[{"title":""}]}
+    profiles=Profile.objects.all()
+    data=[]
+    for profile in profiles:
+        data={"username":profile.user.username}
+        data["biography"]=profile.biography
+        data["profile_photo"]=profile.profile_photo.url  
+        data["projects"]=[]
+        for project in profile.projects.all():
+            data["projects"].append(
+                {"name":project.title,"description":project.description,"image":project.image.url}
+            )
+    return JsonResponse(data)
+
+def projects(request):
+    projects=Project.objects.all()
+    work=[]
+    for project in projects:
+        work={"image":project.image.url}
+        work["description"]=project.description
+        work["title"]=project.title
+        work["url"]=project.url
+        work["user"]=project.user
+        for project in profile.projects.all():
+            work["projects"].append(
+                {"user":project.user,"image":project.image.url,"description":project.description ,"title":project.title,"url":project.url
+                })
+    return JsonResponse(work)
+
